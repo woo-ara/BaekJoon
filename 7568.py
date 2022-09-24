@@ -33,6 +33,9 @@ for i in range(n):
 # 2    6      6      6     10
 
 
+
+
+
 score = n
 score_list = []
 
