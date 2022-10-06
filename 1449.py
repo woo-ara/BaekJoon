@@ -77,20 +77,15 @@ tape = list(map(int,input().split()))
 
 tape.sort()
 
-start = 0
+loc = 0
 cnt = 0
 
 for i in tape:
-    if start < i:
-        start = i+L-1
+    if loc < i:
+        loc = i+L-1
         cnt += 1
 
 print(cnt)
-
-
-
-
-
 
 '''
        1      2             100       101
