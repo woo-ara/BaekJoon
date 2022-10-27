@@ -3,42 +3,23 @@
 22.10.26 우아라
 '''
 
-n = int(input())    #레벨
+n = int(input())    #레벨 입력
 
-score = []  #점수
+score = []  #점수 입력
 for i in range(n):
     s = int(input())
     score.append(s)
 
-# score_last = score[-1]
 score.reverse() #점수 배열을 거꾸로 뒤집기
 
-# 5 4 3
+cnt = 0
 
 for i in range(n-1):
-    # s1 = score[i]
-    # s2 = score[i-1]
-    num1 =
-    num2 =
-    sub = s1 - s2
-    if sub < 0:
-
-    elif sub == 0:
-        s2 = s1 - 1
-
-
-
-
-
-ans = []
-ans.append(score_last)
-for i in range(n - 1):
-    sl = score_last - 1
-    ans.append(sl)
-    score_last = score_last - 1
-
-cnt = 0
-for i in range(n):
-    cnt += score[i] - ans[i]
+    num1 = score[i]
+    num2 = score[i+1]
+    sub = num2 - (num1 - 1) # (뒷배열)은 (앞배열 - 1) 과 작거나 같아야함
+    if sub > 0: # 만약 크다면
+        cnt = cnt+sub   # 차이만큼 cnt에 +
+        score[i+1] = score[i] - 1   # (뒷배열)을 (앞배열 -1) 로 값 변경
 
 print(cnt)
