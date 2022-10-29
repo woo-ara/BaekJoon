@@ -5,15 +5,15 @@
 
 a, b = input().split()
 
-if len(a) < len(b):
+answer = []
+for i in range(len(b) - len(a) + 1):
+    count = 0
+    for j in range(len(a)):
+        if a[j] != b[i + j]:
+            count += 1
+    answer.append(count)
 
-
-
-if len(a) == len(b):
-
-
-
-
+print(min(answer))
 
 
 
