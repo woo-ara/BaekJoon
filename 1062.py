@@ -40,15 +40,12 @@ anta rc tica
 anta hello tica
 anta car tica
 
-
 rc
 hello
 car
 
 a n t i c / r h e l o
 ->2
-
-
 
 xxxxxxx
 rc
