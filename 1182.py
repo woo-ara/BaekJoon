@@ -6,11 +6,12 @@
 from itertools import chain, combinations
 
 n, s = map(int, input().split())    #정수개수, 합
+num_list = list(map(int, input().split(maxsplit=n)))
+com_list = list(chain.from_iterable(combinations(num_list, r) for r in range(1, len(num_list) + 1)))
 
-s_list = []
-s_list.append(map(int, input().split()))
-
-# s_list.sort()
-com_list = chain.from_iterable(combinations(s_list, r) for r in range(1, len(s_list + 1)))
-
-print(com_list)
+sum_list = []
+cnt = 0
+for i in range(len(com_list)):
+    if sum(com_list[i]) == s:
+        cnt += 1
+print(cnt)
