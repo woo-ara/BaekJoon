@@ -13,14 +13,14 @@ vow_len = 0
 vow_list = []
 for i in vow:
     if i in c_letter:
-        vow_len += 1
-        vow_list.append(i)
+        vow_len += 1        #모음 개수
+        vow_list.append(i)  #모음 리스트
 
 con_len = l - vow_len #consonant
-con_list = list(set(c_letter) - set(vow_list))
+con_list = list(set(c_letter) - set(vow_list))  #자음 리스트
 
-vow_ans = list(combinations(vow_list, 1))
-con_ans = list(combinations(con_list, 2))
+vow_ans = list(combinations(vow_list, 1))   #모음에서 1개씩 뽑기
+con_ans = list(combinations(con_list, 2))   #자음에서 2개씩 뽑기
 
 ans_list = []
 for i in vow_ans:
@@ -29,12 +29,12 @@ for i in vow_ans:
         k_list = list(set(c_letter) - set(i) - set(j))
         k_ans = list(combinations(k_list, (l - 3)))
         for k in k_ans:
-            ans = list(i + j + k)
+            ans = list(i + j + k)   #모음1 + 자음2 + 나머지(l-3) 개
             ans.sort()
             ans_list.append(''.join(ans))
 
 ans_list = list(set(ans_list))
-ans_list.sort()
+ans_list.sort() #사전순 정렬
 
 for i in ans_list:
     print(i)
