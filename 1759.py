@@ -3,6 +3,43 @@
 22.11.10 우아라
 '''
 
+# 답 풀이
+l, c = map(int, input().split())
+bet = list(map(str, input().split()))
+bet.sort() #알파벳 오름차순 정렬
+vowels = ['a', 'e', 'i', 'o', 'u']
+ans = []
+
+def check(ans):
+    mo = 0 #모음 개수
+    ja = 0 #자음 개수
+    for i in range(l): #개수 계산
+        if ans[i] in vowels:
+            mo += 1
+        else:
+            ja += 1
+    if mo >= 1 and ja >= 2: #자음모음 개수 충족
+        return True
+    else:
+        return False
+def func(j):
+    if len(ans) is l:
+        if check(ans) is False: #자음모음 개수 조건 확인
+            return
+        for i in ans: #출력
+            print(i, end="")
+        print()
+        return
+    for i in range(j, c): #알파벳 오름차순 정렬(j)
+        ans.append(bet[i])
+        func(i+1)
+        ans.pop()
+func(0)
+
+
+'''
+# 내 풀이
+
 from itertools import *
 
 l, c = map(int, input().split())    #알파벳개수, 문자종류
@@ -39,31 +76,6 @@ ans_list.sort() #사전순 정렬
 for i in ans_list:
     print(i)
 
-
-
-
-
-
-
-'''
-vow = ['a', 'e', 'i', 'o', 'u'] #vowel
-alphabet = list(ascii_lowercase)
-vow_len = 0
-vow_list = []
-for i in vow:
-    if i in c_letter:
-        vow_len += 1
-        vow_list.append(i)
-        
-con_len = l - vow_len #consonant
-con_list = list(set(c_letter) - set(vow_list))
-
-vow_ans = []
-con_ans = []
-# for i in range(vow_len):
-vow_ans.append(list(combinations(vow_list, 1)))
-# for i in range(con_len):
-con_ans.append(list(combinations(con_list, 2)))
 '''
 
 
@@ -71,62 +83,5 @@ con_ans.append(list(combinations(con_list, 2)))
 
 
 
-
-
-
-
-
-'''
-ans = []
-if vow_len == 1:
-    a = Counter(c_letter)
-    b = a.most_common(l - 1)
-    for i in range(len(b)):
-        ans = vow_list[0] + b[i]
-        ans.sort()
-        print(ans)
-else:
-    while con_len < 2:
-        for i in range(l):
-
-
-
-
-
-v = ['a', 'e', 'i', 'o', 'u']
-alphabet = list(ascii_lowercase)
-
-v_len = 0
-v_list = []
-for i in v:
-    if i in c_letter:
-        v_len += 1
-        v_list.append(i)
-        
-ans = []
-def answer(idx):
-    for i in range(c):
-        if c_letter[i] == 'a' | 'e' | 'i' | 'o' | 'u':
-            ans.append(v_list[i])
-        else:
-            ans.append(v_list[i])
-        if len(ans) == l:
-            print(ans)
-            del ans[idx:]
-
-for j in range(len())
-
-#v_len > 1 이면 하나만 출력하거나 여러개 가능
-
-#v_len == 1이면 무조건 출력, 앞, 뒤에오는 것 중 l-1개 출력 가능
-if v_len == 1:
-    ans.append(v_list[0])
-    idx = alphabet.index(v_list[0])
-    left_list = []
-    right_list = []
-    for i in range(idx):
-        left_list.append(list(combinations(alphabet[:idx], i)))
-        right_list.append(list(combinations(alphabet[idx:], i)))
-'''
 
 
