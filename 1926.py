@@ -3,6 +3,7 @@
 22.11.18 우아라
 '''
 
+'''
 import sys
 input = sys.stdin.readline
 sys.setrecursionlimit(10000000)
@@ -38,9 +39,7 @@ if len(num_list)==0:
 else:
     print(len(num_list))
     print(max(num_list))
-
-
-
+'''
 
 '''
 from collections import deque
@@ -53,7 +52,6 @@ for i in range(n):
 
 dx = [0, 0, 1, -1]
 dy = [1, -1, 0, 0]
-
 
 def bfs(graph, a, b):
     queue = deque()
@@ -88,4 +86,49 @@ else:
     print(len(paint))
     print(max(paint))
 '''
+import sys
+from collections import deque
 
+input = sys.stdin.readline
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def bfs(i, j, graph):
+
+    q = deque([[i, j]])
+    graph[i][j] = 0
+    count = 1
+
+    while q:
+        x, y = q.popleft()
+
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            if 0 < nx <= n and 0 < ny <= m and graph[nx][ny] == 1:
+                q.append([nx, ny])
+                graph[nx][ny] = 2
+                count += 1
+
+    return count
+
+n, m = map(int, input().split())
+# graph = []
+#
+# for i in range(n):
+#     graph.append(list(map(int, input().split())))
+graph = [[0] * (m + 1) for _ in range(n + 1)]
+
+paint = []
+for i in range(n):
+    for j in range(m):
+        if graph[i][j] == 1:
+            paint.append(bfs(i, j, graph))
+
+if len(paint) == 0:
+    print(len(paint))
+    print(0)
+else:
+    print(len(paint))
+    print(max(paint))
