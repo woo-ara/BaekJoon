@@ -10,8 +10,6 @@ def topdown_fibo(n):
     if n < len(fibo_arr):
 		print(fibo_arr[n])
     else:
-        for i in range(n):
-            t_list[i]
 		fibo = topdown_fibo(n-1) + topdown_fibo(n-2)
 		fibo_arr.append(fibo)
 		print(fibo)
