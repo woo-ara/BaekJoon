@@ -86,15 +86,15 @@ else:
     print(len(paint))
     print(max(paint))
 '''
-import sys
+
+
+'''
 from collections import deque
 
-input = sys.stdin.readline
 dx = [0, 0, 1, -1]
 dy = [1, -1, 0, 0]
 
 def bfs(i, j, graph):
-
     q = deque([[i, j]])
     graph[i][j] = 0
     count = 1
@@ -110,15 +110,13 @@ def bfs(i, j, graph):
                 q.append([nx, ny])
                 graph[nx][ny] = 2
                 count += 1
-
     return count
 
 n, m = map(int, input().split())
-# graph = []
-#
-# for i in range(n):
-#     graph.append(list(map(int, input().split())))
-graph = [[0] * (m + 1) for _ in range(n + 1)]
+
+graph = []
+for i in range(n):
+    graph.append(list(map(int, input().split())))
 
 paint = []
 for i in range(n):
@@ -132,3 +130,50 @@ if len(paint) == 0:
 else:
     print(len(paint))
     print(max(paint))
+    
+'''
+
+
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
+
+count = []
+v = [[0] * m for _ in range(n)]
+
+def bfs(i, j):
+    global cnt
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    q = deque()
+    q.append([i, j])
+    v[i][j] = 1
+    while q:
+        x, y = q.popleft()
+
+        for k in range(4):
+            nowx, nowy = x + dx[k], y + dy[k]
+
+            if 0 <= nowx < n and 0 <= nowy < m :
+                if arr[nowx][nowy] == 1 and v[nowx][nowy] == 0:
+                    q.append([nowx, nowy])
+                    v[nowx][nowy] = 1
+                    cnt += 1
+    count.append(cnt)
+
+for i in range(n):
+    for j in range(m):
+        if(arr[i][j] == 1 and v[i][j] == 0):
+            cnt = 1
+            bfs(i, j)
+
+if(len(count) == 0):
+    print(len(count))
+    print(0)
+else:
+    print(len(count))
+    print(max(count))
